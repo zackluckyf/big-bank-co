@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bigBankApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Big Bank Co</title>
+        <link rel="stylesheet" type="text/css" href="resources/styles.css">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="resources/bootstrap-social.css" rel="stylesheet">
+        <link href="resources/styles.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+    </head>
+        
+    <body ng-controller= "navController as navCtrl">
+        <h1>Big Bank Co &reg;</h1>
+        <ul>
+            <li class="navigation-button" ng-click="toggleOthers()" role="presentation" ng-class="{active:isSelected(1)}">
+                <button class="btn-lg btn-primary" ng-click="select(1)" aria-controls="home" role="tab">Home</button>
+            </li>
+            <li class="navigation-button" ng-click="toggleOthers()" role="presentation" ng-class="{active:isSelected(2)}">
+                <button class="btn-lg btn-primary"  ng-click="select(2)" aria-controls="savings options" role="tab">Savings Options</button>
+            </li>
+            <li class="navigation-button" ng-click="toggleOthers()" role="presentation" ng-class="{active:isSelected(3)}">
+                <button class="btn-lg btn-primary" ng-click="select(3)" aria-controls="checking option" role="tab">Checking Options</button>
+            </li>
+            <li class="navigation-button" ng-click="toggleOthers()" role="presentation" ng-class="{active:isSelected(4)}">
+                <button class="btn-lg btn-primary" ng-click="select(4)" aria-controls="credit cards" role="tab">Credit Cards</button>
+            </li>
+            <li class="navigation-button" ng-click="toggleOthers()" role="presentation" ng-class="{active:isSelected(5)}">
+                <button class="btn-lg btn-primary" ng-click="select(5)" aria-controls="loans" role="tab">Loans</button>
+            </li>
+            <li class="navigation-button" ng-click="toggle()" role="presentation" ng-class="{active:isSelected(6)}">
+                <button class="btn-lg btn-primary" ng-click="select(6)" aria-controls="sign in" role="tab">Sign In</button>
+            </li>
+        </ul>
+        <ul>
+            <li class="picture-display" ng-repeat="section in sections | filter:filtText">
+                    <div class="image-div">
+                        <img ng-src={{section.image}}>
+                    </div>
+            </li>
+            <li class="information-display" ng-repeat="section in sections | filter:filtText">
+                    <div class="info">
+                        <p class="name1">{{section.name1}}</p><hr class="name-lines">
+                    </div>
+                    <div>
+                        <p class="forms" ng-hide="myVar">
+                        Username <br> <input type="text" ng-model="login.username"><br>
+                        Password <br> <input type="password" ng-model="login.password"><br>
+                        </p>
+                        <p>{{section.description1}}<br></p>
+                    </div>
+                    <div class="info">
+                        <p>{{section.name2}}</p><hr class="name-lines">
+                    </div>
+                    <div>
+                        <form name="myForm">
+                            <p class="forms" ng-hide="myVar">
+                                Email <br> <input type="email" name="myInput" ng-model="login.email" required>
+                                <span class="error" ng-show="myForm.myInput.$error.required">
+                                Required</span>
+                                <span class="error" ng-show="myForm.myInput.$error.email">
+                                Invalid</span><br>
+                                Username <br> <input type="text" ng-model="login.newUsername"><br>
+                                Password <br> <input type="password" ng-model="login.newPassword">
+                            </p>
+                        </form>
+                        <p>{{section.description2}}</p>
+                    </div>
+            </li>
+        </ul>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="resources/app.js"></script>
+    </body> 
+</html>
